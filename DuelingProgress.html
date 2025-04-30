@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dueling Progress Bars</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen font-sans p-4">
+  <div class="bg-white p-6 md:p-8 rounded-lg shadow-lg w-full max-w-md">
+    <h1 class="text-2xl font-bold mb-6 text-center text-gray-700">Dueling Progress Bars</h1>
+
+    <!-- Timer -->
+    <div class="mb-6">
+      <h2 class="text-lg font-semibold mb-2 text-gray-600">Timer</h2>
+      <div class="flex flex-col sm:flex-row sm:items-center gap-2 mb-3">
+        <label for="timeLimit" class="text-sm font-medium text-gray-500 whitespace-nowrap">Time Limit:</label>
+        <input type="number" id="timeLimit" value="60" min="1" class="w-20 p-2 border border-gray-300 rounded-md focus:ring-emerald-500 focus:border-emerald-500"/>
+        <select id="timeUnit" class="flex-grow p-2 border border-gray-300 rounded-md focus:ring-emerald-500 focus:border-emerald-500 bg-white">
+          <option value="seconds" selected>Seconds</option>
+          <option value="minutes">Minutes</option>
+        </select>
+      </div>
+      <progress id="timerProgress" value="0" max="100" class="mb-1 w-full"></progress>
+      <div class="text-right text-sm text-gray-500" id="timerValue">0%</div>
+      <div class="text-right text-sm text-gray-700 font-mono" id="timerCountdown">00:00</div>
+    </div>
+
+    <hr class="my-6 border-gray-300"/>
+
+    <!-- Tally -->
+    <div class="mb-6">
+      <h2 class="text-lg font-semibold mb-2 text-gray-600">Tally Counter</h2>
+      <div class="flex flex-col sm:flex-row sm:items-center gap-2 mb-3">
+        <label for="tallyGoal" class="text-sm font-medium text-gray-500 whitespace-nowrap">Tally Goal (clicks):</label>
+        <input type="number" id="tallyGoal" value="50" min="1" class="flex-grow p-2 border border-gray-300 rounded-md focus:ring-emerald-500 focus:border-emerald-500"/>
+      </div>
+      <button id="tallyButton" class="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2 px-4 rounded-md mb-3">Click Tally</button>
+      <progress id="tallyProgress" value="0" max="100" class="mb-1 w-full"></progress>
+      <div class="text-right text-sm text-gray-500" id="tallyValue">0% (0/50)</div>
+    </div>
+
+    <div class="flex flex-col sm:flex-row gap-3">
+      <button id="startButton" class="flex-1 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md">Start Timer</button>
+      <button id="resetButton" class="flex-1 bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-md">Reset All</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
